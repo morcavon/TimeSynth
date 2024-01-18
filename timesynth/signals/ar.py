@@ -51,6 +51,6 @@ class AutoRegressive(BaseSignal):
         """
         ar_value = [self.previous_value[i] * self.ar_param[i] for i in range(len(self.ar_param))]
         noise = np.random.normal(loc=0.0, scale=self.sigma, size=1)
-        ar_value = np.sum(ar_value) + noise
+        ar_value = float(np.sum(ar_value) + noise)
         self.previous_value = self.previous_value[1:]+[ar_value]
         return ar_value
